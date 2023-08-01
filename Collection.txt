@@ -1,0 +1,1845 @@
+  
+Collections in java is a framework that provides an architecture to store and 
+manipulate the group of objects.
+ 
+  
+All the operations that you perform on a data such as 
+1. searching, 
+2. sorting, 
+3. insertion, 
+4. manipulation,
+5. deletion etc. 
+can be performed by Java Collections.
+
+"Collection represents a group of objects into a single unit"
+
+
+
+The java.util package contains all the classes and interfaces for Collection framework.
+ 
+ 
+
+
+*List and subclass-> List is an interface available in java.util package
+                     List subclass allow duplicate element
+
+note-> write a arraylist program to hold the different data type
+
+
+
+ArrayList->  (1)uses a dynamic array for storing the elements.
+             (2)can contain duplicate elements.
+             (3)maintains insertion order.
+             (4)not synchronized. 
+             (5)random access because array works at the index basis.    
+
+   
+                             
+                                               
+LinkedList->  (1)uses doubly linked list to store the elements.     
+              (2)can contain duplicate elements.
+              (3)maintains insertion order.
+              (4)not synchronized.
+              (5)manipulation fast because no shifting needs to be occurred.
+ 
+
+
+
+Vector->  (1)vector methods are synchronized,so vector object can not be accessed by multiple threads at a time.
+          (2)vector elements will be stored internally using indexing notation
+               
+  
+ 
+
+                          | *** Methods of List interface ***|
+
+add(E e) ->Appends the specified element to the end of this list (optional operation).
+	
+
+add(int index, E element)->Inserts the specified element at the specified position in this list (optional operation).
+	
+
+addAll(Collection c)->Appends all of the elements in the specified collection to the end of this list, in the order that they are returned by the specified collection's iterator (optional operation).
+	
+
+addAll(int index, Collection c)->Inserts all of the elements in the specified collection into this list at the specified position (optional operation).
+	
+
+clear()->Removes all of the elements from this list (optional operation).
+	
+
+contains(Object o)->Returns true if this list contains the specified element.
+
+
+containsAll(Collection c)->Returns true if this list contains all of the elements of the specified collection.
+
+
+equals(Object o)->Compares the specified object with this list for equality.
+	
+
+get(int index)->Returns the element at the specified position in this list.
+
+
+indexOf(Object o)->Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
+
+
+boolean	isEmpty()->Returns true if this list contains no elements.
+
+
+remove(int index)->Removes the element at the specified position in this list (optional operation).
+	
+
+remove(Object o)->Removes the first occurrence of the specified element from this list, if it is present (optional operation).
+	
+
+removeAll(Collection c)->Removes from this list all of its elements that are contained in the specified collection (optional operation).
+
+
+retainAll(Collection c)->Retains only the elements in this list that are contained in the specified collection (optional operation).
+	
+
+set(int index, E element)->Replaces the element at the specified position in this list with the specified element (optional operation).
+	
+
+size()->Returns the number of elements in this list.
+
+
+subList(int fromIndex, int toIndex)->Returns a view of the portion of this list between the specified fromIndex, inclusive, and toIndex, exclusive.
+
+toArray()->Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+
+*example of List->
+
+ex.1->import java.util.*;
+
+public class Demo1 {
+	public static void main(String[] args) {
+		List a1 = new ArrayList();
+               
+		     
+                     a1.add("ram");
+		     a1.add("sita");
+		     a1.add('A');
+		     a1.add('B');
+		     a1.add(12.5);
+		     a1.add(23.7);
+                     a1.add(17);
+		     a1.add(27);
+		     System.out.println("List element is :"+a1);
+		
+	}
+
+}
+
+
+ex.2->import java.util.ArrayList;
+
+
+public class Demo1 {
+	public static void main(String []args)
+	{
+		ArrayList a1= new ArrayList();
+		  a1.add("ram");
+		  a1.add("lakshman");
+		  a1.add("BHARAT");
+		  a1.add("shatrughan");
+		  a1.add("sita");
+		 
+		  System.out.println(a1);
+		  
+		  // add element at the specified index
+		  
+		  a1.add(2,"krishna");
+		  a1.add(4,"radha");
+		  
+		// a1.add(8,"mohan"); it will shows run time error
+		  
+		 System.out.println(a1);
+		 System.out.println("element at index 2 "+a1.get(2));
+		 System.out.println("the index of bharat object "+a1.indexOf("bharat"));
+		 System.out.println("does element contain sita "+a1.contains("sita"));
+		 System.out.println("does element contain bharat "+a1.contains("bharat"));
+		 System.out.println("does element contain java "+a1.contains("java"));
+		 
+		 System.out.println("size of array list is "+a1.size());
+		// System.out.println("capicity of array list is "+a1.capicity()); error
+		
+		 System.out.println("is array list empty "+a1.isEmpty());
+		       a1.remove("krishna");
+		       a1.remove(4);
+		       System.out.println("the list after deletion "+a1);   
+		       
+		       // remove of all element from array list
+		       a1.clear();
+		   System.out.println("after clear list is "+ a1);
+		 
+	}
+
+}
+
+ex.3->                                // copy of one array list of another list           
+public class Demo2 {
+	public static void main(String []args)
+	{
+         ArrayList a1 = new ArrayList();
+                  a1.add("ram");
+		  a1.add("lakshman");
+		  a1.add("bharat");
+		  a1.add("shatrughan");
+		  a1.add("sita");
+		  a1.add("urmila");
+		  
+		System.out.println("the actual list is "+a1);  
+	
+		// copy of array list into another list
+		ArrayList a2= (ArrayList)a1.clone();  
+		
+		System.out.println("the copy list is "+a2);
+	
+		List a3 = new ArrayList();
+		     a3.add("dashrath");
+		     a3.add("sumitra");
+		     a3.add("koshalaya");
+
+		     System.out.println("size of arraylist 3"+a3.size());       
+		  // copy of a list into another  array list
+		     a1.addAll(a3);
+		   System.out.println("the copy list is after adding list"+a1);  
+		   
+	 }
+	
+}
+
+ex.4->import java.util.ArrayList;
+import java.util.List;
+
+                         // program to find does ArrayList contains all list elements or not?
+public class Demo1 {
+  public static void main(String []args)
+  {
+	  ArrayList a1 = new ArrayList();
+	    a1.add("ram");
+	    a1.add("sita");
+	    a1.add("luv");
+	    a1.add("kush");
+	    a1.add("bharat");
+	    a1.add("lakshman");
+	    
+	 List l1 = new ArrayList(); 
+	      l1.add("luv");
+	      l1.add("kush");
+	      
+	 System.out.println("does list contain all element "+a1.containsAll(l1));   
+	 
+	     l1.add("surya");
+	     
+	     System.out.println("does list contain all element "+a1.containsAll(l1));   
+  }
+}
+
+ex.4->import java.util.LinkedList;
+import java.util.List;
+
+
+public class Demo1{
+	public static void main(String[] args) {
+		List l1=new LinkedList();
+		   l1.add("sri");
+		   l1.add("ram");
+		   l1.add("sita");
+		   l1.add("bharat");
+		   System.out.println("the size of the linked list 1: "+l1.size());
+	    List l2 =new LinkedList();
+	         l2.add("shatrughan");
+	         l2.add("lakshman");
+	         l2.add("urmila");
+	      System.out.println("the size of the linked list 2: "+l2.size());  
+	     //l1.add(l2);
+	     
+              l1.addAll(l2);  
+	      System.out.println("first linked list is"+l1);
+	      System.out.println("the size of the linked list 1: "+l1.size());
+	      
+	}
+
+}
+
+for each loop->
+
+class ForEachExample1{  
+  public static void main(String args[]){  
+   int arr[]={12,13,14,44};  
+
+     for(int i:arr)
+	{  
+     	System.out.println(i);  
+   	}  
+  
+ }   
+}  
+
+
+ex.5->import java.util.ArrayList;
+
+
+                     // convert ArrayList to Array
+public class Demo4 {
+	 public static void main(String []args)
+	 {
+		 ArrayList a1= new ArrayList();
+		  a1.add("ram");
+		  a1.add("lakshman");
+		  a1.add("bharat");
+		  a1.add("shatrughan");
+		  a1.add("sita");
+		  a1.add("urmila");
+		 System.out.println("actual array list "+a1); 
+		
+             	String []s1= new String[a1.size()];
+		   
+                   a1.toArray(s1);
+		   for(String str: s1)  // point noterd
+		   {
+			   System.out.println(str);
+		   }
+		   
+	   ArrayList a2= new ArrayList();
+	        a2.add('A');
+	        a2.add('B');
+	        a2.add('C');
+	        a2.add('D');
+	        a2.add('E');
+	      /* char[] c1 = new char[a2.size()];    error
+	          a2.toArray()  */
+	       Object[] c1 =new Object[a2.size()];
+	       a2.toArray(c1);
+	       for(Object obj:c1)
+	       {
+	    	   System.out.println(obj);
+	       }
+	
+	ArrayList a3= new ArrayList();
+	      a3.add(12);
+	      a3.add(13);
+	      a3.add(14);
+	 Integer[] x1 = new Integer[a3.size()] ;
+	      a3.toArray(x1);
+	      for(Integer i:x1)
+	      {
+	    	  System.out.println(i);
+	      }
+	 
+	 ArrayList a4 = new ArrayList();
+	     a4.add("ram");
+	     a4.add("sita");
+	     a4.add("E");
+	     a4.add("F");
+	     a4.add(25);
+	     a4.add(26);
+	     a4.add(13.4);
+	     a4.add(15.7);
+	     
+	     Object[] c2 =new Object[a4.size()];
+
+
+	       a4.toArray(c2);
+
+	       for(Object obj:c2)
+	       {
+	    	   System.out.println(obj);
+	       }
+	       
+	  
+	 }
+	 
+}
+
+**************************************************************************************************************************
+access the "List subclasses" element one by one(traverse the list element one by one)->
+        there are three ways to access the element of List subclasses
+
+by using->  (1) Iterator interface
+            (2) ListIterator interface 
+            (3) for_each loop (it can also use to access the array)
+
+Iterator interface->(1) iterator is an interface available in "java.util" package.
+                    (2) it is a cursor to access the elements from collection subclass one by one.
+                    (3) iterator() method can be invoked with collection subclass classes that returns the object of iterator
+
+                   **** method of Iterator interface ***
+
+ boolean hasNext()->checks whether next element is available or not    
+
+ Object  next()->moves the pointer and returns element from collection
+
+ void remove()-> remove the current elements from collection
+
+ex.1->import java.util.*;
+public class Demo1 {
+	public static void main(String []args)
+	{
+		List l1 = new ArrayList();
+		  l1.add("ram");
+		  l1.add("lakshman");
+		  l1.add("bharat");
+		  l1.add("shatrughan");
+		  l1.add("sita");
+		  l1.add("urmila");
+		  
+		  System.out.println(l1);
+		  
+		  Iterator i1 = l1.iterator();
+		  while(i1.hasNext())
+		  {
+			  System.out.println(i1.next());
+		  }
+        }
+    }
+
+ex.2->
+import java.util.Iterator;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+                                    // remove of element using iterator
+
+public class Demo1 {
+	public static void main(String []args)
+	{
+		List l1 = new ArrayList();
+		  l1.add("ram");
+		  l1.add("lakshman");
+		  l1.add("bharat");
+		  l1.add("shatrughan");
+		  l1.add("sita");
+		  l1.add("urmila");
+		  
+		  System.out.println("before deletion the list is ");
+		  System.out.println(l1);
+          System.out.println("enter the element u want to delete");		  
+		  Scanner s1 = new Scanner(System.in);
+		  String name = s1.nextLine();
+		  Iterator i1= l1.iterator();
+		  while(i1.hasNext())
+		  {
+			  if(name.equals(i1.next()))
+			  {
+				  i1.remove();
+			  }
+		  }
+		  System.out.println("after the deletion the list is ");
+		  System.out.println(l1);
+	}
+}
+
+ListIterator interface->(1)ListIterator is an interface which is extending Iterator interface.
+                        (2)ListIterator provides some extra methods that can be used to access to manage the data for the list sub classes
+                        (3)ListIterator Interface is used to traverse the element in backward and forward direction. but iterator can be move in only forwrad direction
+                  
+                    *** method of ListIterator interface ***
+  
+  boolean hasNext();
+  
+  Object next();
+  
+  boolean hasPrevious();
+  
+  Object previous();
+
+ex.1->import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+                            // example of list itearator
+public class Demo1 {
+  public static void main(String []args)
+  {
+	  List l1 = new ArrayList();
+	      l1.add("ram");
+		  l1.add("lakshman");
+		  l1.add("bharat");
+		  l1.add("shatrughan");
+		  l1.add("sita");
+		  l1.add("urmila");
+	
+	ListIterator li =l1.listIterator();
+	System.out.println("print the element in forward direction"); 
+	while(li.hasNext())
+	 {
+		 System.out.println(li.next());
+	 }
+
+
+
+	System.out.println("print the element in backward direction");
+	while(li.hasPrevious())	 
+	{
+		System.out.println(li.previous());
+		
+	}
+
+
+  }
+}
+
+for_each loop->The for-each loop introduced in Java5. It is mainly used to traverse array or collection elements. 
+
+ advantage of for-each loop->is that it eliminates the possibility of bugs and makes the code more readable.
+
+syntax of for each loop-> for(data_type variable : array | collection)
+                           { 
+                             body of loop 
+                           }  
+
+1-> Example of for-each loop for traversing the array elements:
+    
+      class Example1
+      {  
+         public static void main(String args[])
+         {  
+            int arr[]={12,13,14,44};  
+  
+            for(int i:arr)
+             {  
+               System.out.println(i);  
+             }  
+  
+         }   
+     
+      }
+
+2->Simple Example of for-each loop for traversing the collection elements:
+
+    import java.util.*;  
+     class Example2
+     {  
+       public static void main(String args[])
+        {  
+ 
+             ArrayList<String> list=new ArrayList<String>();  
+             list.add("vimal");  
+             list.add("sonoo");  
+             list.add("ratan");  
+  
+           for(String s:list)
+            {  
+              System.out.println(s);  
+            }  
+  
+ 
+
+         }   
+     }
+
+3->Simple Example of for-each loop for traversing the collection elements:
+
+
+import java.util.*
+
+     class Example3 
+       {
+	public static void main(String []args)
+	{
+		List l1 = new ArrayList();
+		  a4.add("ram");     //hashcode     ere33
+ 		  a4.add("ram");      //hashcode    ere33
+
+	          a4.add("sita");
+	          a4.add("E");
+	          a4.add("F");
+	          a4.add(25);
+	          a4.add(26);
+	          a4.add(13.4);
+	          a4.add(15.7);
+
+                 for(Object obj : l1)
+		  {
+			  System.out.println(obj);
+		  } 
+	}
+    }	 
+
+**************************************************************************************************************************
+*Set interface->(1)Set is an interface available in java.util package 
+                (2)it is extending java.util.Collection interface  // 216390 
+                (3)Set subclasses does not allow duplicate element. (list allow duplicate element)
+
+                (4)hashCode() and equal() method will be used internally to identify the unique 
+                   object in set i.e if two object have the same hash code and the equals() method
+                   is also returning true then the object will be considered as duplicate object
+
+
+                (5)Set interface does not have any extra method.                  
+                (6)all the methods of collection interface can be used with set subclasses
+
+
+
+1->HashSet->(1) fast for searching and retrieving elements
+             (2) it does not maintain any order for stored elements i.e in this
+                 we can not predict the order of output.
+             (3) contain unique element.
+
+ ex.->  import java.util.*;
+
+    public class Demo1 
+      {
+	public static void main(String[] args) 
+          {
+		 Set h1 = new HashSet();
+		     h1.add("ram");
+		     h1.add("sita");
+		     h1.add("bharat");
+                     h1.add('A');
+                     h1.add('A');
+                     h1.add('a');
+		     h1.add("satrughan");
+		     h1.add("urmila");
+		     h1.add("sita");
+		     
+                  System.out.println(h1);   
+	}
+
+    }
+
+ 
+ 2->LinkedHashSet->(1)LinkedHashSet is subclass of HashSet
+                   (2)it contain unique element like HashSet
+                   (3)it store the data in the order as added by the user
+
+ ex.->  import java.util.*;
+
+  public class Demo1 
+        {
+	public static void main(String[] args) 
+            {
+
+		LinkedHashSet h1 = new LinkedHashSet();
+		     h1.add("ram");
+		     h1.add("sita");
+		     h1.add("bharat");
+		     h1.add("sita");
+		     h1.add("satrughan");
+		     h1.add("urmila");
+                     h1.add("satrughan");
+		     
+		     System.out.println(h1);
+	  }
+
+       }
+
+  SortedSet->      
+  
+  (1)->TreeSet->(1)it stores the element in sorted order.
+                (2)compareTo() method will be used to identify the object uniquely and
+                   to manage the order of element in tree set.
+      *note->(3)TreeSet allows to store elements of similar type.(see ex-2)
+             (4)null value can not be stored in TreeSet.
+
+ ex.1-> import java.util.*;
+
+   public class Demo1 
+      {
+	public static void main(String[] args) 
+         {
+		TreeSet h1 = new TreeSet();
+		     h1.add("ram");
+		     h1.add("sita");
+		     h1.add("bharat");
+		     h1.add("sita");
+		     h1.add("satrughan");
+		     h1.add("urmila");
+		     
+		     System.out.println(h1);  // o/p will be in sorted order
+	}
+
+   }
+
+ ex.2-> import java.util.*;
+
+ public class Demo1 
+       {
+	public static void main(String[] args) 
+         {
+		TreeSet h1 = new TreeSet();
+		     h1.add(56);
+		     h1.add(42);
+		     h1.add(21);
+		     h1.add(23.5);  // exeption because it is float
+		     h1.add(39);
+		     h1.add(46);
+		     
+		     System.out.println(h1);
+	}
+
+    }
+
+ ex.3-> import java.util.*;
+
+public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet h1 = new TreeSet();
+		     h1.add(56);
+		     h1.add(42);
+		     h1.add(21);
+		     h1.add(44);
+		     h1.add(39);
+		     h1.add(46);
+		     
+		     System.out.println(h1);
+	 }
+
+  }
+
+  ex.4-> import java.util.*;
+
+public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet h1 = new TreeSet();
+		     h1.add('s');
+		     h1.add('d');
+		     h1.add('A');
+		     h1.add('X');
+		     h1.add('s');
+		     h1.add('u');
+		     
+		     System.out.println(h1); // o/p->[A, X, d, s, u]
+                                             //ascii value of A =65,B=66,a=97,b=98.....etc  
+	 }
+   }
+
+  ex.5->import java.util.*;
+
+public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet h1 = new TreeSet();
+		     h1.add("ram");
+		     h1.add("sita");
+		     h1.add("Subhag");
+		     h1.add("Radhe");
+		     h1.add("pyari");
+		     
+		     System.out.println(h1); //o/p->[Radhe, Subhag, pyari, ram, sita]
+	 }
+
+  }
+
+ 
+ 2->NavigableSet->(1)NavigableSet is an interface added in java 6.
+                  (2)it is subtype of sortedSet
+                  (3)its functionality is almost similar to TreeSet except it provide some extra
+                     methods for easy navigation
+                  (4)elements from NavigableSet can be accessed in both forwrad and reverse order
+
+                  ****** method of NavigableSet ******
+
+ceiling(E e)->Returns the least element in this set greater than or equal to the given element, or null if there is no such element.
+	
+
+descendingIterator()->Returns an iterator over the elements in this set, in descending order.
+	
+
+descendingSet()->Returns a reverse order view of the elements contained in this set.
+	
+
+floor(E e)->Returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
+	
+
+headSet(E toElement)->Returns a view of the portion of this set whose elements are strictly less than toElement.
+	
+
+headSet(E toElement, boolean inclusive)->Returns a view of the portion of this set whose elements are less than (or equal to, if inclusive is true) toElement.
+	
+
+higher(E e)->Returns the least element in this set strictly greater than the given element, or null if there is no such element.
+	
+
+iterator()->Returns an iterator over the elements in this set, in ascending order.
+	
+
+lower(E e)->Returns the greatest element in this set strictly less than the given element, or null if there is no such element.
+	
+
+pollFirst()->Retrieves and removes the first (lowest) element, or returns null if this set is empty.
+	
+
+pollLast()->Retrieves and removes the last (highest) element, or returns null if this set is empty.
+	
+
+subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive)->Returns a view of the portion of this set whose elements range from fromElement to toElement.
+	
+
+subSet(E fromElement, E toElement)->Returns a view of the portion of this set whose elements range from fromElement, inclusive, to toElement, exclusive.
+	
+
+tailSet(E fromElement)->Returns a view of the portion of this set whose elements are greater than or equal to fromElement.
+	
+
+tailSet(E fromElement, boolean inclusive)->Returns a view of the portion of this set whose elements are greater than (or equal to, if inclusive is true) fromElement.
+
+
+ex.1->import java.util.*;
+
+ public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet ts = new TreeSet();
+		     ts.add(10);
+		     ts.add(5);
+		     ts.add(7);
+		     ts.add(11);
+		     ts.add(3);
+		     ts.add(9);
+		     ts.add(4);
+		     ts.add(20);
+		 System.out.println(ts);     // [3, 4, 5, 7, 9, 10, 11, 20]
+		
+                Set ts1=ts.descendingSet();
+		 System.out.println(ts1);   //  [20, 11, 10, 9, 7, 5, 4, 3]
+		 System.out.println("--Ascending iterator-");
+		   Iterator it=ts.iterator();
+		   while(it.hasNext())
+		   {
+			   System.out.println(it.next());
+			   
+		   }
+		   System.out.println("--desending iterator-");
+		   Iterator it1=ts.descendingIterator();
+		    while(it1.hasNext())
+		    {
+		    	 System.out.println(it1.next());
+		    }
+	 }
+
+  }
+  
+ 
+ ex.2->import java.util.*;
+
+ public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet ts = new TreeSet();
+		     ts.add(10);
+		     ts.add(5);
+		     ts.add(7);
+		     ts.add(11);
+		     ts.add(3);
+		     ts.add(9);
+		     ts.add(4);
+		     ts.add(20);
+		 System.out.println(ts);            // [3, 4, 5, 7, 9, 10, 11, 20]
+		
+                System.out.println("--subset--");
+		System.out.println(ts.subSet(4,11));  // [4, 5, 7, 9, 10]
+		
+               System.out.println(ts.subSet(4,false,11,true)); // [5, 7, 9, 10, 11]
+		System.out.println(ts.subSet(4,true,11,false));// [4, 5, 7, 9, 10]
+		
+                System.out.println("--headset---");
+		System.out.println(ts.headSet(9));         // [3, 4, 5, 7]
+		System.out.println(ts.headSet(9,true));    // [3, 4, 5, 7, 9]
+		System.out.println(ts.headSet(2));         // [] i,e null
+		
+                System.out.println("--tailset---");
+		System.out.println(ts.tailSet(9));         // [9, 10, 11, 20]
+		System.out.println(ts.tailSet(9,false));   // [10, 11, 20]
+	 }
+
+  }
+   
+
+ ex.3-> import java.util.*;
+
+public class Demo1 
+   {
+	public static void main(String[] args) 
+	  {
+		TreeSet ts = new TreeSet();
+		     ts.add(10);
+		     ts.add(5);
+		     ts.add(7);
+		     ts.add(11);
+		     ts.add(3);
+		     ts.add(9);
+		     ts.add(4);
+		     ts.add(20);    
+	System.out.println("--pollFirst/Last--");
+	
+        System.out.println(ts);             // [3, 4, 5, 7, 9, 10, 11, 20]
+	System.out.println(ts.pollFirst()); // 3
+	
+        System.out.println(ts);            //  [4, 5, 7, 9, 10, 11, 20]
+	System.out.println(ts.pollLast()); //  20
+	System.out.println(ts);            //  [4, 5, 7, 9, 10, 11] 
+	
+	System.out.println("***lower()<***");
+	System.out.println(ts.lower(8));    // 7
+	System.out.println(ts.lower(50));   // 11
+	System.out.println(ts.lower(3));    // null
+	System.out.println(ts.lower(4));    // null
+	
+	System.out.println("***higher()<***");
+	System.out.println(ts.higher(8));   // 9
+	System.out.println(ts.higher(50));  // null
+	System.out.println(ts.higher(3));   // 4
+	System.out.println(ts.higher(9));   // 10
+	
+	System.out.println("***ceiling()<***");
+	System.out.println(ts.ceiling(8));  // 9
+	System.out.println(ts.ceiling(10)); // 10
+	System.out.println(ts.ceiling(11)); // 11
+	System.out.println(ts.ceiling(12)); // null
+	
+	System.out.println("***floor()<***");
+	System.out.println(ts.floor(8));   // 7
+	System.out.println(ts.floor(10));  // 10
+	System.out.println(ts.floor(11));  // 11
+	System.out.println(ts.floor(12));  // 11
+	System.out.println(ts.floor(3));   // null
+		 
+    }
+
+	  
+ }
+
+*************************************************************************************************************************
+
+*Comparable interface->(1)it is an interface comes from java.util package
+                       (2)Comparable interface is used to order(sort) the objects of user-defined class i.e it is
+                          used to specify that the object of the class can be compared or not.
+                       (3)if you have the requirement to compare the object for sorting purpose or to identify the 
+                          higher and lower object then java vendor has provided "Comparable interface"
+                       (4) the folowwing absract method available in the Comparable interface
+                          ------ public int compareTo(Object obj)-----
+                       (5)the object you want to compare must be the subtype of Comparable interface and must have
+                          to provide the implementation for the compareTo() method
+                       (6)if object will not be subtype of comparable then it will throw an exception at run time
+                           java.lang.ClassCastException
+
+ Ex.1-> import java.util.*;
+
+class Student implements Comparable{  
+int rollno;  
+String name;  
+int age;  
+
+Student(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+  
+public int compareTo(Object obj)    // this will sort on age basis
+{  
+	Student st = (Student)obj;
+	return this.age-st.age; 
+}  
+  
+}  
+class Lab1{  
+	public static void main(String args[]){  
+	  
+	ArrayList al=new ArrayList();  
+	al.add(new Student(101,"Vijay",23));  
+	al.add(new Student(106,"Ajay",27));  
+	al.add(new Student(105,"Jai",21)); 
+       
+	System.out.println("Before sorting");
+	Iterator itr=al.iterator();  
+	while(itr.hasNext()){  
+	
+         Student st=(Student)itr.next();  
+	
+      System.out.println(st.rollno+" "+st.name+" "+st.age);
+	}
+	System.out.println("After sorting");
+	
+      Collections.sort(al);  
+	 itr=al.iterator();  
+	while(itr.hasNext()){  
+	Student st=(Student)itr.next();  
+	System.out.println(st.rollno+" "+st.name+" "+st.age);  
+	  }
+	}  
+	
+}
+
+Ex.2->import java.util.*;
+
+class Student implements Comparable{  
+int rollno;  
+String name;  
+int age;  
+Student(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+  
+public int compareTo(Object obj)           // this will sort on name basis
+{
+	
+		Student st = (Student)obj;
+		return this.name.compareTo(st.name);
+
+} 
+  
+}  
+class Lab1{  
+	public static void main(String args[]){  
+	  
+	ArrayList al=new ArrayList();  
+	al.add(new Student(101,"Vijay",23));  
+	al.add(new Student(106,"Ajay",27));  
+	al.add(new Student(105,"Jai",21)); 
+	System.out.println("Before sorting");
+	Iterator itr=al.iterator();  
+	while(itr.hasNext()){  
+	Student st=(Student)itr.next();  
+	System.out.println(st.rollno+" "+st.name+" "+st.age);
+	}
+	System.out.println("After sorting");
+	Collections.sort(al);  
+	 itr=al.iterator();  
+	while(itr.hasNext()){  
+	Student st=(Student)itr.next();  
+	System.out.println(st.rollno+" "+st.name+" "+st.age);  
+	  }
+	}  
+	
+}
+
+ 
+*Comparator interface->note->in this we create the seperate class that implements Comparator interface
+                       (1)if you have the requirement to compare the object that is not the subclass of Comparable,
+                          java vendor has provided java.util.Comparator interface.
+                       (2)you need to write a seperate class by implementing Comparator interface and you need to
+                          override the following method
+                          
+                           * public boolean equals(Object obj)
+                           * public int compare(Object ob1,Object ob2)
+                       
+                       (3)within the compare() method you can typecast to the object into the corresponding type and can 
+                          compare the specified object
+                       (4)It provides multiple sorting sequence i.e. you can sort the elements based on any data member. 
+                          For instance it may be on rollno, name, age or anything else.
+
+note-> using comparable we can define only one sorting criteria but using comperator 
+       we can define multiple sorting crieteria.
+
+ex.1->import java.util.*;
+
+class Student{  
+int rollno;  
+String name;  
+int age;  
+
+Student(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+}  
+class AgeComparator implements Comparator{  
+	 public int compare(Object ob1 ,Object ob2)
+	 {
+		
+			  Student s1=(Student)ob1;
+			  Student s2=(Student)ob2;
+			  return s1.age-s2.age;
+		
+	 } 
+	}
+ 
+class NameComparator implements Comparator{  
+	 public int compare(Object ob1 ,Object ob2)
+	 {
+		 
+		 
+			  Student s1=(Student)ob1;
+			  Student s2=(Student)ob2;
+			  return s1.name.compareTo(s2.name);
+
+		
+	 }
+	}  
+class Lab1{  
+	public static void main(String args[]){  
+	  
+	ArrayList al=new ArrayList(); 
+         
+	al.add(new Student(101,"Vijay",23));  
+	al.add(new Student(106,"Ajay",27));  
+	al.add(new Student(105,"Jai",21));  
+	  
+	System.out.println("Sorting by Name...");  
+	  
+	Collections.sort(al,new NameComparator());  
+	Iterator itr=al.iterator();  
+	while(itr.hasNext()){  
+	Student st=(Student)itr.next();  
+	System.out.println(st.rollno+" "+st.name+" "+st.age);  
+	}  
+	  
+	System.out.println("sorting by age...");  
+	  
+	Collections.sort(al,new AgeComparator());  
+	Iterator itr2=al.iterator();  
+	while(itr2.hasNext()){  
+	Student st=(Student)itr2.next();  
+	System.out.println(st.rollno+" "+st.name+" "+st.age);  
+	}  
+	  
+	  
+	}  
+	}  
+ex.2->import java.util.*;
+
+public class Demo1 {
+	public static void main(String[] args) {
+		System.out.println("*****student info*****");
+		TreeSet t1=new TreeSet(new StringCompare());
+		        t1.add("piya");             
+		        t1.add("nishi");
+		        t1.add("radha");
+		        t1.add("sachi");
+		        t1.add("garima");
+		        t1.add("jyoti");
+		        Iterator it=t1.iterator();
+		        while(it.hasNext())
+		        {
+		        	System.out.println(it.next());
+		        }
+	}
+
+}
+ class StringCompare implements Comparator
+ {
+	 public int compare(Object ob1 ,Object ob2)
+	 {
+		 
+		         String s1=(String)ob1;
+			 String s2=(String)ob2;
+			
+		        // return s1.compareTo(s2);        // show ascending order
+		        return s2.compareTo(s1);       //  show descending order
+	
+	 }
+ }
+
+
+ex.3->import java.util.*;
+
+public class Demo1 {
+	public static void main(String[] args) {
+		System.out.println("*****student info*****");
+		TreeSet t1=new TreeSet(new IntCompare());
+		        t1.add(45);             
+		        t1.add(32);
+		        t1.add(76);
+		        t1.add(84);
+		        t1.add(25);
+		        t1.add(37);
+		        Iterator it=t1.iterator();
+		        while(it.hasNext())
+		        {
+		        	System.out.println(it.next());
+		        }
+	}
+
+}
+ class IntCompare implements Comparator
+ {
+	 public int compare(Object ob1 ,Object ob2)
+	 {
+		 
+			 Integer s1=(Integer)ob1;
+			 Integer s2=(Integer)ob2;
+			
+			  // return s1-s2;           // ascending order
+			   return s2-s1;            // descending order
+			 //return s1.compareTo(s2); // ascending order
+			 // return s2.compareTo(s1);// descending order
+	 }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+note->Q:
+         What are the differences between the Comparable and Comparator interfaces ?
+
+      
+   Comparable	                                                              Comparator
+
+It uses the compareTo() method.                                            it uses the compare() method.
+int objectOne.compareTo(objectTwo).                                        int compare(ObjOne, ObjTwo)
+It is necessary to modify the class whose instance is going to be sorted.  A separate class can be created in order to sort the instances.
+Only one sort sequence can be created.	                                   Many sort sequences can be created.
+It is frequently used by the API classes.	                           It used by third-party classes to sort instances.
+
+
+
+ 
+
+
+
+
+
+
+
+**************************************************************************************************************************
+*Queue->note->in PriorityQueue we do,nt know which priority it will take to insert the element
+
+        (1)PriorityQueue is a class introduced in jdk 1.5 as a part of collection framework.
+        (2)PriorityQueue is internally implemented using heap data structure and it used is
+           for retrieving elements based on priority.
+        (3)Irrespective of the order in which you insert when you remove the elements,the highest
+           priority element will be removed first
+        (4)PriorityQueue is an unbounded queue based on a priority heap and the "elements of the priority
+           queue are ordered by default in natural order"
+        (5)PriorityQueue does not allow null values
+        (6)PrirityQueue is not thread safe.
+              
+
+
+
+                  ********** method of priority queue ********
+	
+offer(E e)->Inserts the specified element into this priority queue.
+
+peek()->Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+	
+poll()->Retrieves and removes the head of this queue, or returns null if this queue is empty.
+	
+remove(Object o)->Removes a single instance of the specified element from this queue, if it is present.
+	
+size()->Returns the number of elements in this collection.
+
+
+
+
+
+ex.1->import java.util.*;
+
+public class Demo1
+{
+	public static void main(String[] args) {
+		Queue q1=new PriorityQueue();
+		q1.add("piya");             
+	        q1.add("nishi");
+	        q1.add("radha");
+	        q1.add("sachi");
+	        q1.add("garima");
+	        q1.add("jyoti");
+	        System.out.println("queue is "+q1);
+	}
+}                                                      
+    o/p->queue is [garima, nishi, jyoti, sachi, piya, radha]
+         
+         note-> in this we can not predict o/p beacuse we do,nt know which type of priority is use by the queue  
+                because PriorityQueue are ordered by default in natural order" 
+
+
+
+
+
+
+
+ex.2->import java.util.*;
+
+public class Demo1
+{
+	public static void main(String[] args) {
+		Queue q1=new PriorityQueue();
+		q1.add(55);             
+	        q1.add(42);
+	        q1.add(23);
+	        q1.add(37);
+	        q1.add(63);
+	        q1.add(49);
+	        System.out.println("queue is "+q1);
+	}
+}
+         o/p->queue is [23, 37, 42, 55, 63, 49]
+
+ex.3->import java.util.*;
+
+public class Demo1
+{
+	public static void main(String[] args) {
+		Queue q1=new PriorityQueue();
+		    q1.add("piya");             
+	        q1.add("nishi");
+	        q1.add("radha");
+	        q1.add("sachi");
+	        q1.add("garima");
+	        q1.add("jyoti");
+	        System.out.println("queue is:"+q1);
+	        System.out.println("size:"+q1.size());
+	        System.out.println("peek:"+q1.peek());
+	        System.out.println("size:"+q1.size());
+	        System.out.println("elements:"+q1.element());
+	        System.out.println("size:"+q1.size());
+	        System.out.println("poll:"+q1.poll());
+	        System.out.println("size:"+q1.size());
+                System.out.println("add element:"+q1.add("amber"));
+                 System.out.println("add element:"+q1.add("komal"));
+	        System.out.println("add element:"+q1.offer("ram"));
+	        System.out.println("add element:"+q1.offer("sita"));
+              
+	        System.out.println("queue is:"+q1);
+
+
+	}
+}
+
+
+
+
+
+
+************************************************************************************************************************** 
+
+*Map interface->(1)Map is an interface available in java.util pakage and introduced in Collection framework.
+                (2)Map is part of the framework but does not extend from the Collection interface.
+                   it is the root of its own hierarchy.
+                (3)the subclasses of the map will be used to store the data as "Key-Value"format as a pair.
+                (4)the key will be always unique in the map.
+                (5)the value can be duplicate.
+                (6)Each key can have only one value at one time.
+                (7)one "key-value" is known as entry.
+                (8)internally the data will be stored as Entry object.
+                (9)if you are using the entrySet() to access the data then the object accessed from set need to 
+                   be typecasted into Map.Entry type.
+
+
+
+                    Key -> Value
+                    3434    "asfd"       entry.    Entry object.
+                    3432    "asfd"       entry.
+
+
+
+
+
+ 
+
+
+
+
+
+
+                 ************** methods of Map Interface *************
+clear()->Removes all of the mappings from this map (optional operation).
+	
+containsKey(Object key)->Returns true if this map contains a mapping for the specified key.
+
+containsValue(Object value)->Returns true if this map maps one or more keys to the specified value.
+
+entrySet()->Returns a Set view of the mappings contained in this map.
+
+equals(Object o)->Compares the specified object with this map for equality.
+	
+get(Object key)->Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+hashCode()->Returns the hash code value for this map.
+	
+isEmpty()->Returns true if this map contains no key-value mappings.
+
+keySet()->Returns a Set view of the keys contained in this map.
+	
+put(K key, V value)->Associates the specified value with the specified key in this map (optional operation).
+	
+putAll(Map<? extends K,? extends V> m)->Copies all of the mappings from the specified map to this map (optional operation).
+
+remove(Object key)->Removes the mapping for a key from this map if it is present (optional operation).
+
+size()->Returns the number of key-value mappings in this map.
+	
+values()->Returns a Collection view of the values contained in this map.
+
+
+
+
+
+*HashMap->(1)internally implemented as a hash-table data structure. Store key and value pairs.
+          (2)uses hashing for finding a place to search or store a pair.
+          (3)searching or inserting is very fast
+          (4)it does not store the elements in any order i.e we can not predict the order of o/p.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*LinkedHashMap->(1)it is subclass for HashMap
+                (2)stores the element in order specified by user.
+
+*TreeMap->(1)it uses a tree data structure to decide where to store or search for keys and the position
+             is decided by the sorting order
+          (2)stores the data sorted order of key.
+          (3)for comparing the object of sorting purpose compareTo() with the object will be used.
+          (4)in TreeMap the elements as key should be of similar type.
+          (5)Null value can not be added in the TreeMap as Key.
+
+*Navigable Map->(1)Navigable Map is an interface added in java6.
+                (2)it is subtype of SortedMap.
+                (3)its functionality is almost similar to TreeMap except it provides some extra methods
+                   for easy Navigation.
+                (4)Elements from NavigableMap can be accessed in both forward or backward direction.
+
+note-> in map output always include inside in { } brackets where in set and list include in [] brackets
+
+
+
+
+
+
+Hashtable->(1)A Hashtable is an array of list.Each list is known as a bucket.The position of bucket is identified by calling the hashcode() method.
+           (2)A Hashtable contains values based on the key. It implements the Map interface 
+           (3)It contains only unique elements.
+           (4)It do notnot have any null key or value.
+           (5)It is synchronized.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is difference between HashMap and Hashtable?
+ 
+          HashMap                                                 HashTable
+1) HashMap is not synchronized.	                                Hashtable is synchronized.
+2) HashMap can contain one null key and multiple null values.	Hashtable cannot contain any null key nor value.
+**************************************************************************************************************************
+
+
+
+
+
+HashMap
+ex.1->import java.util.HashMap;
+public class Demo1
+{
+   public static void main(String[] args) {
+	   HashMap hm=new HashMap();  
+	   
+	   hm.put(100,"Amit");  
+	   hm.put(101,"Vijay");  
+	   hm.put(102,"Rahul"); 
+            
+         
+	   
+	   System.out.println(hm);  // {102=Rahul, 100=Amit, 101=Vijay}
+  }
+
+	} 
+
+ex.2->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   HashMap hm=new HashMap();  
+	   
+	   hm.put(100,"Amit");  
+	   hm.put(101,"Vijay");  
+	   hm.put(102,"Rahul"); 
+	   
+            System.out.println(hm);
+	   Set set = hm.entrySet();
+	   Iterator it = set.iterator();
+	   while(it.hasNext())
+	   {
+		   System.out.println(it.next());
+	   }
+  }
+
+	}
+
+ex.3->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   HashMap hm=new HashMap();  
+	   
+	   hm.put("sid","kc-102");  
+	   hm.put("name","subham");  
+	   hm.put("email","subham@gmail.com");
+	   hm.put("phone", "9616754075");
+	   hm.put("add", "btm");
+          
+	   
+	   System.out.println("hash map is "+hm); 
+	   Set set = hm.entrySet();
+	   Iterator it = set.iterator();
+	   while(it.hasNext())
+	   {
+		   System.out.println(it.next());
+	   }
+  }
+
+	}
+
+ex.4->import java.util.*;  
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   HashMap hm=new HashMap();  
+	   
+	   hm.put("sid","kc-102");  
+	   hm.put("name","subham");  
+	   hm.put("email","subham@gmail.com");
+	   hm.put("phone", "9616754075");
+	   hm.put("add", "btm");
+	   
+	   Set set = hm.entrySet();
+	   Iterator it = set.iterator();
+	   while(it.hasNext()){  
+		   Map.Entry m=(Map.Entry)it.next();  
+		   System.out.println(m.getKey()+" "+m.getValue());
+  }
+
+	}
+}
+**************************************************************************************************************************
+LinkedHashMap
+ex.5->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   LinkedHashMap hm=new LinkedHashMap();  
+	   
+	   hm.put("sid","kc-102");  
+	   hm.put("name","subham");  
+	   hm.put("email","subham@gmail.com");
+	   hm.put("phone", "9616754075");
+	   hm.put("add", "btm");
+	   
+	   System.out.println("linked hash map :"+hm); //linked hash map :{sid=kc-102, name=subham, email=subham@gmail.com, phone=9616754075, add=btm}
+	   Set set = hm.entrySet();
+	   Iterator it = set.iterator();
+	   while(it.hasNext()){  
+		   Map.Entry m=(Map.Entry)it.next();  
+		   System.out.println(m.getKey()+" "+m.getValue());
+  }
+
+	}
+
+ex.6->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   LinkedHashMap hm=new LinkedHashMap();  
+	   
+	   hm.put("sid","kc-102");  
+	   hm.put("name","subham");  
+	   hm.put("email","subham@gmail.com");
+	   hm.put("phone", "9616754075");
+	   hm.put("add", "btm");
+	   
+	   System.out.println("linked hash map :"+hm);
+	   System.out.println("size :"+hm.size());
+	   System.out.println("IS EMPTY :"+hm.isEmpty());
+	   System.out.println("contains key");
+	   System.out.println(hm.containsKey("name"));
+	   System.out.println(hm.containsKey("phone"));
+	   System.out.println(hm.containsKey("mobile"));
+	   System.out.println("containes value");
+	   System.out.println(hm.containsValue("subham"));
+	   System.out.println(hm.containsValue("silk board"));
+	   System.out.println("remove");
+	   System.out.println("remove email id "+hm.remove("email"));
+           System.out.println("remove add value "+hm.remove("btm")); 
+	   System.out.println("after remove");
+	   System.out.println(hm);
+	   System.out.println("get()");
+	   System.out.println(hm.get("name"));
+	   System.out.println(hm.get("phone"));
+	   
+	}
+}
+*************************************************************************************************************************
+TreeMap-> in this o/p will be sorted order accoring to the key.
+ex.1->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	   TreeMap hm=new TreeMap();  
+	   
+	   hm.put("sid","kc-102");  
+	   hm.put("name","subham");  
+	   hm.put("email","subham@gmail.com");
+	   hm.put("phone", "9616754075");
+	   hm.put("add", "btm");
+	   hm.put("weight","76");
+	   hm.put("height", "5.6");
+	  
+           System.out.println(hm);  //{add=btm, email=subham@gmail.com, height=5.6, name=subham, phone=9616754075, sid=kc-102, weight=76}
+	   Set set = hm.entrySet();
+	   Iterator it = set.iterator();
+	   while(it.hasNext())
+	   {
+		   System.out.println(it.next());
+
+	   }
+	   
+	   
+	   
+	}
+}
+
+HashTable->
+ex->import java.util.*;  
+class TestCollection16{  
+ public static void main(String args[]){  
+   
+  Hashtable<Integer,String> hm=new Hashtable<Integer,String>();  
+  
+  hm.put(100,"Amit");  
+  hm.put(102,"Ravi");  
+  hm.put(101,"Vijay");  
+  hm.put(103,"Rahul");  
+  
+  for(Map.Entry m:hm.entrySet()){  
+   System.out.println(m.getKey()+" "+m.getValue());  
+  }  
+ }  
+}  
+
+
+
+
+
+Collections->(1)Collections is a class available in java.util package
+             (2)this class contains utility methods that can be used with collection classes to perform 
+                various operations like
+                (a)sorting elements of collection
+                (b)shuffling order of collection element
+                (c)reversing the elements
+                    etc..
+
+ex.1->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	  List l1 = new ArrayList();
+	       l1.add("bharat");
+	       l1.add("lakshman");
+	       l1.add("b");
+	       l1.add("c");
+	       l1.add("ram");
+	       l1.add("sita");
+	    
+	       System.out.println("1st list is "+l1); //[bharat, lakshman, b, c, ram, sita]
+	       
+	  List l2 = new ArrayList();
+	       l2.add("krishna");
+	       l2.add("radha");
+	       System.out.println("2nd list is "+l2);// [krishna, radha]
+	       
+	       Collections.copy(l1,l2);
+	       
+	       System.out.println("copy string is "+l1);// [krishna, radha, b, c, ram, sita]
+	}
+}
+
+ex.2->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	  List l1 = new ArrayList();
+	       l1.add("bharat");
+	       l1.add("lakshman");
+	       l1.add("b");
+	       l1.add("c");
+	       l1.add("ram");
+	       l1.add("sita");
+	    System.out.println("list is "+l1); //[bharat, lakshman, b, c, ram, sita]
+	    
+	    System.out.println("replacing b with krishna");
+	    
+	    Collections.replaceAll(l1, "b", "krishna");
+	    System.out.println("list is "+l1);// [bharat, lakshman, krishna, c, ram, sita]
+	    
+	    Object mx = Collections.max(l1);
+	    System.out.println("max object is "+mx); // sita
+	    
+	    Object min = Collections.min(l1);
+	    System.out.println("min object is "+min);// bharat
+	    
+	    System.out.println("replacing all with krishna");
+	    Collections.fill(l1, "krishna");
+	    System.out.println(l1);
+	      
+	}
+}
+
+ex.3->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	  List l1 = new ArrayList();
+	       l1.add("bharat");
+	       l1.add("lakshman");
+	       l1.add("b");
+	       l1.add("c");
+	       l1.add("ram");
+	       l1.add("sita");
+	    System.out.println("list is "+l1); // [bharat, lakshman, b, c, ram, sita]
+	    
+	    System.out.println("reverse of the list");
+	      Collections.reverse(l1);
+	    System.out.println(l1);       // [sita, ram, c, b, lakshman, bharat]
+	    
+	    System.out.println("rotate(2)");
+	      Collections.rotate(l1, 2);
+	      System.out.println(l1);   // [lakshman, bharat, sita, ram, c, b]
+	      
+	      System.out.println("rotate(3)");
+	      Collections.rotate(l1, 3);
+	      System.out.println(l1); // [ram, c, b, lakshman, bharat, sita]
+	      
+	      System.out.println("shuffle");
+	       for(int i=0;i<5;i++)
+	       {
+	    	    Collections.shuffle(l1);
+	    	    System.out.println(l1);
+	       }
+	      
+	      
+	}
+}
+
+note->Arrays is a class in java where array is an object in java
+*Arrays->(1)Arrays is a class available in java.util package
+         (2)this class contains utility method that can be used with array object to perform
+            various operations like
+            (a) sorting elements of collection
+            (b) shuffling order of collection element
+                etc....
+
+ex.1->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	  int arr[]=new int[]{10,43,23,89,45};
+	  System.out.println("***natural order***");
+	   for(int i=0;i<arr.length;i++)
+	   {
+		   System.out.println(i+"\t"+arr[i]);
+	   }
+	   
+	   System.out.println("***sorted order***");
+	    Arrays.sort(arr);
+	    for(int i=0;i<arr.length;i++)
+		   {
+			   System.out.println(i+"\t"+arr[i]);
+		   }
+		   
+	    System.out.println("** binary search of 47**");
+		int indx=Arrays.binarySearch(arr, 47);
+		System.out.println(indx);
+		
+		 System.out.println("** binary search of 23**");
+			indx=Arrays.binarySearch(arr, 23);
+			System.out.println(indx);
+			
+		System.out.println("**equals (int[],int[])");	
+		int values[]=new int[]{43,23,89,45,10};
+		System.out.println(Arrays.equals(arr,values));
+		
+		int data[]=new int[]{10,23,43,45,89};
+		System.out.println(Arrays.equals(arr,data));
+
+	}
+}
+
+ex.2->import java.util.*;
+
+public class Demo1
+{
+   public static void main(String[] args) 
+    {
+	  int arr[]=new int[]{10,43,23,89,45};
+	  System.out.println("***natural order***");
+	   for(int i=0;i<arr.length;i++)
+	   {
+		   System.out.println(i+"\t"+arr[i]);
+	   }   
+		   
+	     System.out.println("** fill(int[],101)");
+		   Arrays.fill(arr,101);
+		 for(int i=0;i<arr.length;i++)
+		 {
+			 System.out.println(i+"\t"+arr[i]);
+		 }
+	    Object values[]=new Object[5];
+	      values[0]='a';
+	      values[1]="ram";
+	      values[2]=new Integer(123);
+	      values[3]=new Boolean(true);
+	      values[4]=new Double(12.67);
+	    List l1=Arrays.asList(values);
+	    System.out.println(l1);
+	   
+	   
+	}
+}
